@@ -38,7 +38,6 @@ def generate_sample_data(n_samples=1000):
         'water_intake_ml': water_intake
     })
 
-    # Generate labels based on risk factors
     risk_score = (
         (sugar_intake > 60) * 0.25 +
         (salt_intake > 7) * 0.25 +
@@ -48,10 +47,8 @@ def generate_sample_data(n_samples=1000):
         (water_intake < 1500) * 0.05
     )
 
-    # Add some randomness
     risk_score += np.random.normal(0, 0.1, n_samples)
 
-    # Convert to binary labels
     y = (risk_score > 0.5).astype(int)
 
     return X, y
